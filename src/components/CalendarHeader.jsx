@@ -20,6 +20,7 @@ const CalendarHeader = ({ currentDate, selectedDate, onNavigateMonth }) => {
         <button
           onClick={() => onNavigateMonth(-1)}
           className="p-2 hover:bg-blue-600 rounded-lg transition-colors"
+          aria-label="Previous month"
         >
           <ChevronLeft size={20} />
         </button>
@@ -31,6 +32,7 @@ const CalendarHeader = ({ currentDate, selectedDate, onNavigateMonth }) => {
         <button
           onClick={() => onNavigateMonth(1)}
           className="p-2 hover:bg-blue-600 rounded-lg transition-colors"
+          aria-label="Next month"
         >
           <ChevronRight size={20} />
         </button>

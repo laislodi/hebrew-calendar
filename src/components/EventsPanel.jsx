@@ -24,6 +24,7 @@ const EventsPanel = ({
         <button
           onClick={onShowForm}
           className="p-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors"
+          aria-label="Add event"
         >
           <Plus size={16} />
         </button>
