@@ -79,7 +79,7 @@ describe('CalendarHeader', () => {
     expect(header).toBeInTheDocument();
   });
 
-  it('displays calendar icon', () => {
+  it('displays selected date info', () => {
     render(
       <CalendarHeader
         currentDate={testCurrentDate}
@@ -88,7 +88,7 @@ describe('CalendarHeader', () => {
       />
     );
 
-    // The calendar icon is present but doesn't have a testid
-    expect(screen.getByText('Selected:')).toBeInTheDocument();
+    // Check if the selected date text is present
+    expect(screen.getByText(/Selected:/)).toBeInTheDocument();
   });
 });

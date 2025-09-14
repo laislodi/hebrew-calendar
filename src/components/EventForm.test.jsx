@@ -32,9 +32,9 @@ describe('EventForm', () => {
   });
 
   it('renders time input', () => {
-    render(<EventForm {...defaultProps} />);
+    const { container } = render(<EventForm {...defaultProps} />);
 
-    const timeInput = screen.getByDisplayValue('');
+    const timeInput = container.querySelector('input[type="time"]');
     expect(timeInput).toBeInTheDocument();
     expect(timeInput).toHaveAttribute('type', 'time');
   });
@@ -62,9 +62,9 @@ describe('EventForm', () => {
   });
 
   it('calls onTimeChange when time input changes', () => {
-    render(<EventForm {...defaultProps} />);
+    const { container } = render(<EventForm {...defaultProps} />);
 
-    const timeInput = screen.getByDisplayValue('');
+    const timeInput = container.querySelector('input[type="time"]');
     fireEvent.change(timeInput, { target: { value: '15:30' } });
 
     expect(mockOnTimeChange).toHaveBeenCalledWith('15:30');
@@ -132,10 +132,10 @@ describe('EventForm', () => {
   });
 
   it('inputs have proper styling classes', () => {
-    render(<EventForm {...defaultProps} />);
+    const { container } = render(<EventForm {...defaultProps} />);
 
     const titleInput = screen.getByPlaceholderText('Event title');
-    const timeInput = screen.getByDisplayValue('');
+    const timeInput = container.querySelector('input[type="time"]');
 
     expect(titleInput).toHaveClass('w-full', 'p-2', 'border', 'rounded-md', 'text-sm');
     expect(timeInput).toHaveClass('w-full', 'p-2', 'border', 'rounded-md', 'text-sm');
