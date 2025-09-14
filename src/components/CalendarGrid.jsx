@@ -1,3 +1,4 @@
+import { HDate } from '@hebcal/core';
 import CalendarDay from './CalendarDay';
 
 const CalendarGrid = ({
@@ -8,20 +9,21 @@ const CalendarGrid = ({
 }) => {
   const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-  const getDaysInMonth = (date) => {
-    return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+  const getDaysInHebrewMonth = (hdate) => {
+    return hdate.daysInMonth();
   };
 
-  const getFirstDayOfMonth = (date) => {
-    return new Date(date.getFullYear(), date.getMonth(), 1).getDay();
+  const getFirstDayOfHebrewMonth = (hdate) => {
+    const firstDay = new HDate(1, hdate.getMonth(), hdate.getFullYear());
+    return firstDay.greg().getDay(); // 0 = Sunday, 6 = Saturday
   };
 
-  const formatDateKey = (date) => {
-    return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+  const formatDateKey = (hdate) => {
+    return `${hdate.getFullYear()}-${hdate.getMonth()}-${hdate.getDate()}`;
   };
 
   const isToday = (day) => {
-    const today = new Date();
+    const today = new HDate();
     return day === today.getDate() &&
            currentDate.getMonth() === today.getMonth() &&
            currentDate.getFullYear() === today.getFullYear();
@@ -34,8 +36,8 @@ const CalendarGrid = ({
   };
 
   const renderCalendarDays = () => {
-    const daysInMonth = getDaysInMonth(currentDate);
-    const firstDay = getFirstDayOfMonth(currentDate);
+    const daysInMonth = getDaysInHebrewMonth(currentDate);
+    const firstDay = getFirstDayOfHebrewMonth(currentDate);
     const days = [];
 
     // Empty cells for days before the first day of the month
@@ -47,7 +49,8 @@ const CalendarGrid = ({
 
     // Days of the month
     for (let day = 1; day <= daysInMonth; day++) {
-      const dateKey = formatDateKey(new Date(currentDate.getFullYear(), currentDate.getMonth(), day));
+      const dayHDate = new HDate(day, currentDate.getMonth(), currentDate.getFullYear());
+      const dateKey = formatDateKey(dayHDate);
       const hasEvents = events[dateKey]?.length > 0;
 
       days.push(

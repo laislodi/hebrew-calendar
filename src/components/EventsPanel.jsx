@@ -19,7 +19,7 @@ const EventsPanel = ({
     <div className="bg-gray-50 rounded-lg p-4">
       <div className="flex items-center justify-between mb-3">
         <h3 className="font-medium text-gray-800">
-          Events for {selectedDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+          Events for {selectedDate.getDate()}
         </h3>
         <button
           onClick={onShowForm}

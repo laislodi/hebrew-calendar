@@ -4,18 +4,22 @@ A React application for displaying and managing Hebrew calendar dates, built wit
 
 ## Features
 
-- Interactive Hebrew calendar display
-- Date conversion between Hebrew and Gregorian calendars
-- Modern, responsive UI built with React and Tailwind CSS
-- Fast development experience with Vite
+- ✅ Hebrew months displayed (Av 5785 instead of January 2025)
+- ✅ Accurate Hebrew calendar calculations (29/30 day months)
+- ✅ Proper date conversions between Hebrew and Gregorian
+- ✅ Hebrew year numbering (5785 instead of 2025)
+- ✅ Month navigation respects Hebrew calendar structure
+- ✅ Modern, responsive UI built with React and Tailwind CSS
+- ✅ Fast development experience with Vite
 
 ## Tech Stack
 
-- **React 19.1.1** - Modern UI library with latest features
-- **Vite 4.4.5** - Fast build tool and development server
-- **Tailwind CSS 3.3.3** - Utility-first CSS framework for styling
-- **Lucide React** - Beautiful icon library
-- **ESLint** - Code linting and quality assurance
+- **React 19.1.1** - Modern UI library with latest features: [Docs](https://react.dev/learn)
+- **Vite 4.4.5** - Fast build tool and development server: [Docs](https://vite.dev/guide/)
+- **Tailwind CSS 3.3.3** - Utility-first CSS framework for styling: [Documentation](https://tailwindcss.com/docs/installation/using-vite)
+- **Lucide React** - Beautiful icon library: [Docs](https://lucide.dev/guide/packages/lucide-react)
+- **ESLint** - Code linting and quality assurance: [Docs](https://eslint.org/docs/latest/)
+- **Hebcal** - Perpetual Jewish Calendar library: [Docs](https://hebcal.github.io/api/core/index.html)
 
 ## Getting Started
 

@@ -1,10 +1,18 @@
 import { ChevronLeft, ChevronRight, Calendar } from 'lucide-react';
 
 const CalendarHeader = ({ currentDate, selectedDate, onNavigateMonth }) => {
-  const months = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
-  ];
+  const getHebrewMonthName = (hdate) => {
+    return hdate.getMonthName();
+  };
+
+  const formatSelectedDate = (hdate) => {
+    const gregorianDate = hdate.greg();
+    const weekday = gregorianDate.toLocaleDateString('en-US', { weekday: 'long' });
+    const hebrewMonth = getHebrewMonthName(hdate);
+    const day = hdate.getDate();
+    const year = hdate.getFullYear();
+    return `${weekday}, ${hebrewMonth} ${day}, ${year}`;
+  };
 
   return (
     <div className="bg-blue-500 text-white p-4 sticky top-0 z-10">
@@ -17,7 +25,7 @@ const CalendarHeader = ({ currentDate, selectedDate, onNavigateMonth }) => {
         </button>
 
         <h1 className="text-lg font-semibold">
-          {months[currentDate.getMonth()]} {currentDate.getFullYear()}
+          {getHebrewMonthName(currentDate)} {currentDate.getFullYear()}
         </h1>
 
         <button
@@ -31,12 +39,7 @@ const CalendarHeader = ({ currentDate, selectedDate, onNavigateMonth }) => {
       <div className="flex items-center gap-2">
         <Calendar size={16} />
         <span className="text-sm">
-          Selected: {selectedDate.toLocaleDateString('en-US', {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-          })}
+          Selected: {formatSelectedDate(selectedDate)}
         </span>
       </div>
     </div>

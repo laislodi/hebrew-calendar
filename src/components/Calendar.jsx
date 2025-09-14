@@ -1,31 +1,32 @@
 import { useState } from 'react';
+import { HDate } from '@hebcal/core';
 import CalendarHeader from './CalendarHeader';
 import CalendarGrid from './CalendarGrid';
 import EventsPanel from './EventsPanel';
 
 const HebrewCalendar = () => {
-  const [currentDate, setCurrentDate] = useState(new Date());
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [currentDate, setCurrentDate] = useState(new HDate());
+  const [selectedDate, setSelectedDate] = useState(new HDate());
   const [events, setEvents] = useState({});
   const [showEventForm, setShowEventForm] = useState(false);
   const [newEventTitle, setNewEventTitle] = useState('');
   const [newEventTime, setNewEventTime] = useState('');
 
-  const formatDateKey = (date) => {
-    return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+  const formatDateKey = (hdate) => {
+    return `${hdate.getFullYear()}-${hdate.getMonth()}-${hdate.getDate()}`;
   };
 
   const navigateMonth = (direction) => {
     setCurrentDate(prev => {
-      const newDate = new Date(prev);
-      newDate.setMonth(prev.getMonth() + direction);
-      return newDate;
+      const newHDate = new HDate(prev);
+      // Navigate by approximately 30 days to get to next/previous month
+      return newHDate.add(direction > 0 ? 30 : -30);
     });
   };
 
   const selectDate = (day) => {
-    const newSelectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
-    setSelectedDate(newSelectedDate);
+    const newHDate = new HDate(day, currentDate.getMonth(), currentDate.getFullYear());
+    setSelectedDate(newHDate);
   };
 
   const addEvent = () => {
