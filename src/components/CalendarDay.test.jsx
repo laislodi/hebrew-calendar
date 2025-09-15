@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import CalendarDay from './CalendarDay';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 describe('CalendarDay', () => {
   const mockOnClick = vi.fn();

@@ -1,6 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { HDate } from '@hebcal/core';
 import CalendarHeader from './CalendarHeader';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 describe('CalendarHeader', () => {
   const mockOnNavigateMonth = vi.fn();

@@ -1,5 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Calendar from './Calendar';
+import { describe, expect, it } from 'vitest';
 
 describe('Calendar Basic Integration Tests', () => {
   it('renders the complete calendar interface', () => {

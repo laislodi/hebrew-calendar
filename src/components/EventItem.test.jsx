@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import EventItem from './EventItem';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 describe('EventItem', () => {
   const mockOnRemove = vi.fn();

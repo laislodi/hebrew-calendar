@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import EventForm from './EventForm';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 describe('EventForm', () => {
   const mockOnTitleChange = vi.fn();
