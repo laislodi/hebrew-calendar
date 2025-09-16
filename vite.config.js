@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/', // important for GitHub Pages
+  base: '/portfolio', // important for GitHub Pages
   test: {
     globals: true,
     setupFiles: 'src/setupTests.js',
